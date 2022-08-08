@@ -55,3 +55,35 @@ model Session {
   // user      User     @relation(fields: [userId], references: [id])
   // userId    Int      @unique
 }
+ 
+ 
+ 
+model  VehicleDetails  {
+
+  vehicleRegNo        String
+  regValidity         String
+  vehicleType         String
+  chasisNo            String     @unique
+  vehicleMake         String
+  vehicleModel        String
+  vehicleFinanced     String
+  purchaseDate        String
+  financerName        String
+  financerContactNo   Int        @unique
+  insuranceStatus     String
+  insuranceUpto       String   // relation scalar field (used in the `@relation` attribute
+  driverId            String      
+  
+  
+}
+ model  VehicleOwner   {
+
+    name         String  
+    mobileNo     Int      @unique
+    CAddress     String
+    PAddress     String
+    AdharId      Int
+ }
+
+
+

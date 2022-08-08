@@ -1,8 +1,5 @@
 import express from "express";
 const app = express();
-import dotenv from "dotenv";
-import "express-async-errors";
-dotenv.config();
 import morgan from "morgan";
 import  session from "express-session";
 import flash from 'connect-flash'
@@ -73,3 +70,4 @@ const start = async () =>{
 start()
 
 
+ 

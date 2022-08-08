@@ -18,4 +18,4 @@ router.route("/verifyOtp").post(verifyOtp)
 
 
 
-export default router;
+export default  router;
