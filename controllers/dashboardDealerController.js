@@ -26,25 +26,25 @@ const createDealerData = async(req,res) => {
     if (!user) {
       throw new BadRequestError("user not found");
     }
-    const referral = await prisma.Referral.create({
+    const dealer = await prisma.vehicleDetails.create({
         data: {
-            vehicleRegNo: vehicleRegNo,       
-            regValidity: regValidity, 
-            vehicleType: vehicleType,         
-            chasisNo   :chasisNo  ,        
-            vehicleMake : vehicleMake,      
-            vehicleModel:   vehicleModel,
-            vehicleFinanced:vehicleFinanced ,  
-            purchaseDate :  purchaseDate  ,   
-            financerName:financerName,
+            vehicleRegNo:    vehicleRegNo,       
+            regValidity:     regValidity, 
+            vehicleType:     vehicleType,         
+            chasisNo   :     chasisNo  ,        
+            vehicleMake :    vehicleMake,      
+            vehicleModel:    vehicleModel,
+            vehicleFinanced: vehicleFinanced ,  
+            purchaseDate :   purchaseDate  ,   
+            financerName:    financerName,
             insuranceStatus: insuranceStatus,
-            insuranceUpto :insuranceUpto,
-            financerContactNo:financerContactNo,
-            driverId:user.driverOldId
+            insuranceUpto :   insuranceUpto,
+            financerContactNo: financerContactNo,
+            driverId:          user.driverOldId
         }
     });
 
-    res.status(200).send(referral)
+    res.status(200).send(dealer)
 }
 
 
@@ -60,11 +60,20 @@ const getDealerData = async(req,res) => {
     }
     const dealer = await prisma.driver.findUnique({
        where: {
-        financerContactNo:financerContactNo
-       }
+        financerContactNo:financerContactNo }
     });
 
     res.status(200).send(dealer)
 }
 
-export {createDealerData,getDealerData}
+
+
+
+
+
+
+
+
+
+
+export  {createDealerData,getDealerData,}

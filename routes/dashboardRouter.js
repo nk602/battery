@@ -12,7 +12,8 @@ router.route("/postDealerDataCoordinates").post(postDealerDataCoordinates);
 router.route("/postDealerDataNewCoordinates").post(postDealerDataNewCoordinates);
 router.route("/createReferralData").post(createReferralData);
 router.route("/getReferralData").post(getReferralData)
-router.route("/getReferralData").post(createDealerData)
-router.route("/getReferralData").post(getDealerData)
+
+router.route("/createDealerData").post(createDealerData)
+router.route("/getDealerData").post(getDealerData)
 
 export default router;

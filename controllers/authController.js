@@ -29,7 +29,7 @@ import bcrypt from "bcrypt";
 
 //! Register User
 const register = async (req, res) => {
-  const { mobileNo } = req.body;
+  const { mobileNo,email,name ,password} = req.body;
 
   //* checking if any one of the field is empty will throw an error
   if (!mobileNo) {
@@ -51,47 +51,48 @@ const register = async (req, res) => {
   //encrypting the password
   // const newPassword = await hashPassword(password);
 
-  // const now = new Date();
+  ///const now = new Date();
 
   // //calculating current Time
-  // var otpCurrentTime = await currentTime(now, 0);
+ ///  var otpCurrentTime = await currentTime(now, 0);
 
   // //Logic for newUSER ,if user is trying to change the password for the first time
-  // if (!resetUser.code) {
-  //   var otp = await OtpGen(); //Generating Otp
-  //   var otpTime = await currentTime(now, 1); //calculating time for which otp will be valid
-  // }
+  //if (!resetUser.code) {
+   // var otp = await OtpGen(); //Generating Otp
+    // var otpTime = await currentTime(now, 1); //calculating time for which otp will be valid
+ // }
 
   // //If user already changed the password and trying for the second time
-  // if (resetUser.expiryIn < resetUser.currentIn) {
+ //  if (resetUser.expiryIn < resetUser.currentIn) {
   //   otpTime = await currentTime(now, 1); //calculating time for which otp will be valid
-  //   otp = await OtpGen();
-  // }
+   // otp = await OtpGen();
+  //}
 
-  // //  const otpData = await prisma.user.update({
-  // //    where: {
-  // //      email: email,
-  // //    },
-  // //    data: {
-  // //      code: otp,
-  // //      expiryIn: otpTime,
-  // //      currentIn: otpCurrentTime,
-  // //    },
-  // //    select: {
-  // //      id: true,
-  // //      email: true,
-  // //      code: true,
-  // //      expiryIn: true,
-  // //      currentIn: true,
-  // //    },
-  // //  });
+   ////const otpData = await prisma.user.update({
+   //where: {
+   ///  email: email,
+    //  },
+  ///  data: {
+        
+    ///    code: otp,
+    //   expiryIn: otpTime,
+    //    currentIn: otpCurrentTime,
+    /// },
+    // select: {
+   //     id: true,
+    ///  email: true,
+   //   code: true,
+   //   expiryIn: true,
+  //      currentIn: true,
+  //  },
+   // });
 
   //creating user
   const newUser = await prisma.driver.create({
     data: {
       mobileNo: mobileNo,
       driverId: "D0000",
-      // code: otp,
+     // code: otp,
       // expiryIn: otpTime,
       // currentIn: otpCurrentTime,
     },
@@ -105,13 +106,13 @@ const register = async (req, res) => {
   });
 
   //Generating JWT token but not using it in registration form
-  //  const accessToken = await createJWT(newUser);
+   const accessToken = await createJWT(newUser);
 
   // Generating logs for register dash
-  // registerDash.log(
-  //   "info",
-  //   `${newUser.name} ,${newUser.password},${newUser.email},Token:${accessToken}`
-  // );
+   registerDash.log(
+    "info",
+    `${newUser.name} ,${newUser.password},${newUser.email},Token:${accessToken}`
+  );
   res.status(StatusCodes.OK).json({
     msg: "signed in successfully",
     updatedUser,

@@ -43,7 +43,7 @@ app.use(
 );
 
 app.use("/api/b1/auth", authRouter);
-app.use('/api/b1/dashboard',auth,dashboardRouter)
+app.use('/api/b1/dashboard',dashboardRouter)
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
