@@ -22,15 +22,15 @@ model Driver {
   referral          Referral[]
   VehicleDetails    VehicleDetails[]
   VehicleOwner      VehicleOwner []
-  GuarantorDetails   GuarantorDetails []
+  GuarantorDetails  GuarantorDetails []
 
   createdAt   DateTime?  @default(now())
   updatedAt   DateTime?  @updatedAt
 }
 
 model DealerData {
-  id          Int     @id @unique @default(autoincrement())
-  bssCode     String? @unique
+  id          Int       @id @unique @default(autoincrement())
+  bssCode     String?   @unique
   bss         String?
   address     String?
   city        String?
@@ -56,7 +56,7 @@ model Session {
   sid       String   @unique
   data      String
   expiresAt DateTime
-  // user      User     @relation(fields: [userId], references: [id])
+ // user      User     @relation(fields: [userId], references: [id])
   //userId    Int      @unique
 }
  
@@ -65,17 +65,17 @@ model Session {
 model  VehicleDetails  {
    
    
-  id                  String     @id @unique
+  id                    Int        @id @unique @default(autoincrement())
   vehicleRegNo        String
   regValidity         String
   vehicleType         String
-  chasisNo            String     @unique
+  chasisNo            String       @unique
   vehicleMake         String
   vehicleModel        String
   vehicleFinanced     String
   purchaseDate        String
   financerName        String
-  financerContactNo   Int        @unique
+  mobleNo             String       @unique        
   insuranceStatus     String
   insuranceUpto       String  
   driver              Driver    @relation(fields: [driverId], references: [driverOldId])
@@ -84,26 +84,26 @@ model  VehicleDetails  {
   
 }
  model  VehicleOwner   {
-    id                String   @id
-    vehicleId         String
-    name              String  
-    mobileNo          Int      @unique
-    CAddress          String
-    PAddress          String
-    AdharId           Int
-    driver            Driver    @relation(fields: [driverId], references: [driverOldId])
-    driverId          String     
+    id                 String   @id
+    vehicleId          String
+    name               String  
+    mobileNo           String   @unique 
+    CurrentAddress     String
+    PermanentAddress   String
+    AdharId            Int
+    driver             Driver    @relation(fields: [driverId], references: [driverOldId])
+    driverId           String     
  }
  model GuarantorDetails  {
      
-    id                String   @id
-    name              String  
-    mobileNo          Int      @unique
-    CAddress          String
-    PAddress          String
-    AdharId           Int
-    driver            Driver    @relation(fields: [driverId], references: [driverOldId])
-    driverId          String   
+    id                   String   @id
+    name                 String  
+    mobileNo             Int      @unique
+    CurrentAddress       String
+    PermanentAddress     String
+    AdharId              Int
+    driver               Driver    @relation(fields: [driverId], references: [driverOldId])
+    driverId             String   
 
 
 
